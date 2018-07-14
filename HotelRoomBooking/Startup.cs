@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using HotelRoomBooking.Persistance;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
 
 namespace HotelRoomBooking
 {
@@ -24,6 +25,7 @@ namespace HotelRoomBooking
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper();
             services.AddDbContext<HotelRoomBookingDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddMvc();
         }

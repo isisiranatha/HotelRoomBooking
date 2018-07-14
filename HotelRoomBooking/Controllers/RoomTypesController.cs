@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HotelRoomBooking.Model;
 using HotelRoomBooking.Persistance;
+using AutoMapper;
 
 namespace HotelRoomBooking.Controllers
 {
@@ -15,10 +16,12 @@ namespace HotelRoomBooking.Controllers
     public class RoomTypesController : Controller
     {
         public HotelRoomBookingDbContext Context { get; }
+        public IMapper Mapper { get; }
 
-        public RoomTypesController(HotelRoomBookingDbContext context)
+        public RoomTypesController(HotelRoomBookingDbContext context, IMapper mapper)
         {
             Context = context;
+            Mapper = mapper;
         }
 
         // GET: api/RoomTypes

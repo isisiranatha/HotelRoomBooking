@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HotelRoomBooking.Model;
 using HotelRoomBooking.Persistance;
+using AutoMapper;
+using HotelRoomBooking.Controllers.Resources;
 
 namespace HotelRoomBooking.Controllers
 {
@@ -15,17 +17,20 @@ namespace HotelRoomBooking.Controllers
     public class BookingsController : Controller
     {
         public HotelRoomBookingDbContext Context { get; }
+        public IMapper Mapper { get; }
 
-        public BookingsController(HotelRoomBookingDbContext context)
+        public BookingsController(HotelRoomBookingDbContext context, IMapper mapper)
         {
             Context = context;
+            Mapper = mapper;
         }
 
         // GET: api/Bookings
         [HttpGet]
-        public async Task<IEnumerable<Booking>> GetBooking()
+        public async Task<IEnumerable<BookingResource>> GetBooking()
         {
-            return await Context.Booking.Include(m => m.Guests).ToListAsync();
+            var bookings = await Context.Booking.Include(m => m.Guests).ToListAsync();
+            return Mapper.Map<List<Booking>, List<BookingResource>>(bookings);
             
         }
 
