@@ -11,7 +11,7 @@ using System;
 namespace HotelRoomBooking.Migrations
 {
     [DbContext(typeof(HotelRoomBookingDbContext))]
-    [Migration("20180714144807_InitialModel")]
+    [Migration("20180714150743_InitialModel")]
     partial class InitialModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,7 +40,7 @@ namespace HotelRoomBooking.Migrations
 
                     b.HasIndex("RoomTypeID");
 
-                    b.ToTable("Booking");
+                    b.ToTable("Bookings");
                 });
 
             modelBuilder.Entity("HotelRoomBooking.Model.Guest", b =>
@@ -66,7 +66,7 @@ namespace HotelRoomBooking.Migrations
 
                     b.HasIndex("BookingID");
 
-                    b.ToTable("Guest");
+                    b.ToTable("Guests");
                 });
 
             modelBuilder.Entity("HotelRoomBooking.Model.RoomType", b =>
@@ -82,7 +82,7 @@ namespace HotelRoomBooking.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("RoomType");
+                    b.ToTable("RoomTypes");
                 });
 
             modelBuilder.Entity("HotelRoomBooking.Model.Booking", b =>

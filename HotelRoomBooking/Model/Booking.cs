@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace HotelRoomBooking.Model
 {
+    [Table("Bookings")]
     public class Booking
     {
         [Key]

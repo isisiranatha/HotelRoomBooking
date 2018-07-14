@@ -10,7 +10,7 @@ namespace HotelRoomBooking.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "RoomType",
+                name: "RoomTypes",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
@@ -20,11 +20,11 @@ namespace HotelRoomBooking.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RoomType", x => x.ID);
+                    table.PrimaryKey("PK_RoomTypes", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Guest",
+                name: "Guests",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
@@ -36,11 +36,11 @@ namespace HotelRoomBooking.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Guest", x => x.ID);
+                    table.PrimaryKey("PK_Guests", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Booking",
+                name: "Bookings",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
@@ -52,41 +52,41 @@ namespace HotelRoomBooking.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Booking", x => x.ID);
+                    table.PrimaryKey("PK_Bookings", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Booking_Guest_GuestID",
+                        name: "FK_Bookings_Guests_GuestID",
                         column: x => x.GuestID,
-                        principalTable: "Guest",
+                        principalTable: "Guests",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Booking_RoomType_RoomTypeID",
+                        name: "FK_Bookings_RoomTypes_RoomTypeID",
                         column: x => x.RoomTypeID,
-                        principalTable: "RoomType",
+                        principalTable: "RoomTypes",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Booking_GuestID",
-                table: "Booking",
+                name: "IX_Bookings_GuestID",
+                table: "Bookings",
                 column: "GuestID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Booking_RoomTypeID",
-                table: "Booking",
+                name: "IX_Bookings_RoomTypeID",
+                table: "Bookings",
                 column: "RoomTypeID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Guest_BookingID",
-                table: "Guest",
+                name: "IX_Guests_BookingID",
+                table: "Guests",
                 column: "BookingID");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Guest_Booking_BookingID",
-                table: "Guest",
+                name: "FK_Guests_Bookings_BookingID",
+                table: "Guests",
                 column: "BookingID",
-                principalTable: "Booking",
+                principalTable: "Bookings",
                 principalColumn: "ID",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -94,17 +94,17 @@ namespace HotelRoomBooking.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Booking_Guest_GuestID",
-                table: "Booking");
+                name: "FK_Bookings_Guests_GuestID",
+                table: "Bookings");
 
             migrationBuilder.DropTable(
-                name: "Guest");
+                name: "Guests");
 
             migrationBuilder.DropTable(
-                name: "Booking");
+                name: "Bookings");
 
             migrationBuilder.DropTable(
-                name: "RoomType");
+                name: "RoomTypes");
         }
     }
 }
