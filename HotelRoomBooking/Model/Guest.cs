@@ -11,16 +11,16 @@ namespace HotelRoomBooking.Model
         [Key]
         public int ID { get; set; }
         [Required]
+        [StringLength(255)]
         public string SurName { get; set; }
         [Required]
+        [StringLength(255)]
         public string FirstName { get; set; }
-        [Required]
-        [DataType(DataType.EmailAddress)]
+        [Required(ErrorMessage = "Field can't be empty")]
+        [StringLength(255)]
+        [DataType(DataType.EmailAddress, ErrorMessage = "E-mail is not valid")]
         [EmailAddress]
         public string Email { get; set; }
-        [DataType(DataType.DateTime)]
-        public DateTime? StartDate { get; set; }
-        [DataType(DataType.DateTime)]
-        public DateTime? EndDate { get; set; }
+       
     }
 }

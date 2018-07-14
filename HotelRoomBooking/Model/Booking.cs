@@ -17,8 +17,12 @@ namespace HotelRoomBooking.Model
         [ForeignKey("RoomType")]
         public int RoomTypeID { get; set; }
         public RoomType RoomType { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        [DataType(DataType.Date)]
+        [Display(Name = "Start date)")]       
+        public Nullable<DateTime> StartDate { get; set; }
+        [DataType(DataType.Date)]
+        [Display(Name = "End date)")]
+        public Nullable<DateTime> EndDate { get; set; }
         public ICollection<Guest> Guests { get; set; }
         
 

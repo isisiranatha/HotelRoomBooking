@@ -11,6 +11,7 @@ namespace HotelRoomBooking.Model
         [Key]
         public int ID { get; set; }
         [Required]
+        [StringLength(255)]
         public string RoomTypeName { get; set; }
         public int PricePerDay { get; set; }
 
