@@ -11,7 +11,7 @@ using System;
 namespace HotelRoomBooking.Migrations
 {
     [DbContext(typeof(HotelRoomBookingDbContext))]
-    [Migration("20180714150743_InitialModel")]
+    [Migration("20180714233055_InitialModel")]
     partial class InitialModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,8 +48,6 @@ namespace HotelRoomBooking.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("BookingID");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(255);
@@ -63,8 +61,6 @@ namespace HotelRoomBooking.Migrations
                         .HasMaxLength(255);
 
                     b.HasKey("ID");
-
-                    b.HasIndex("BookingID");
 
                     b.ToTable("Guests");
                 });
@@ -96,13 +92,6 @@ namespace HotelRoomBooking.Migrations
                         .WithMany()
                         .HasForeignKey("RoomTypeID")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("HotelRoomBooking.Model.Guest", b =>
-                {
-                    b.HasOne("HotelRoomBooking.Model.Booking")
-                        .WithMany("Guests")
-                        .HasForeignKey("BookingID");
                 });
 #pragma warning restore 612, 618
         }

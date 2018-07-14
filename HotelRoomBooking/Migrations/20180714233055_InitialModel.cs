@@ -10,6 +10,21 @@ namespace HotelRoomBooking.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Guests",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Email = table.Column<string>(maxLength: 255, nullable: false),
+                    FirstName = table.Column<string>(maxLength: 255, nullable: false),
+                    SurName = table.Column<string>(maxLength: 255, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Guests", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RoomTypes",
                 columns: table => new
                 {
@@ -21,22 +36,6 @@ namespace HotelRoomBooking.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RoomTypes", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Guests",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    BookingID = table.Column<int>(nullable: true),
-                    Email = table.Column<string>(maxLength: 255, nullable: false),
-                    FirstName = table.Column<string>(maxLength: 255, nullable: false),
-                    SurName = table.Column<string>(maxLength: 255, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Guests", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -76,32 +75,15 @@ namespace HotelRoomBooking.Migrations
                 name: "IX_Bookings_RoomTypeID",
                 table: "Bookings",
                 column: "RoomTypeID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Guests_BookingID",
-                table: "Guests",
-                column: "BookingID");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Guests_Bookings_BookingID",
-                table: "Guests",
-                column: "BookingID",
-                principalTable: "Bookings",
-                principalColumn: "ID",
-                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Bookings_Guests_GuestID",
-                table: "Bookings");
+            migrationBuilder.DropTable(
+                name: "Bookings");
 
             migrationBuilder.DropTable(
                 name: "Guests");
-
-            migrationBuilder.DropTable(
-                name: "Bookings");
 
             migrationBuilder.DropTable(
                 name: "RoomTypes");

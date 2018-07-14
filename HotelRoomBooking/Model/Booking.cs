@@ -24,8 +24,7 @@ namespace HotelRoomBooking.Model
         [DataType(DataType.Date)]
         [Display(Name = "End date)")]
         public Nullable<DateTime> EndDate { get; set; }
-        public ICollection<Guest> Guests { get; set; }
-        
+               
 
     }
 }

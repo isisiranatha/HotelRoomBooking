@@ -24,12 +24,12 @@ namespace HotelRoomBooking.Controllers
             Context = context;
             Mapper = mapper;
         }
-
+        
         // GET: api/Bookings
         [HttpGet]
         public async Task<IEnumerable<BookingResource>> GetBooking()
         {
-            var bookings = await Context.Booking.Include(m => m.Guests).ToListAsync();
+            var bookings = await Context.Booking.Include(m => m.Guest).ToListAsync();            
             return Mapper.Map<List<Booking>, List<BookingResource>>(bookings);
             
         }
