@@ -1,13 +1,20 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
+import { BookingService } from "../../Services/booking.service";
 
 @Component({
     selector: 'booking',
     templateUrl: './booking.component.html'
 })
-export class BookingComponent {
-    public currentCount = 0;
+    
+export class BookingComponent implements OnInit {
+    bookings;
+    constructor(private BookingService: BookingService) { }
 
-    public incrementCounter() {
-        this.currentCount++;
-    }
+    ngOnInit() {
+        this.BookingService.getBookings().subscribe(bookings => {
+            this.bookings = bookings;
+            console.log("Bookings", this.bookings);
+        });
+        }
+        
 }
