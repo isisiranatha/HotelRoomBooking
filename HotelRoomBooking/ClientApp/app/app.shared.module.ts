@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { BookingComponent } from './components/booking/booking.component';
+import { BookingService } from './Services/booking.service';
 
 
 
@@ -34,6 +35,9 @@ import { BookingComponent } from './components/booking/booking.component';
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }
         ])
+    ],
+    providers: [
+        BookingService
     ]
 })
 export class AppModuleShared {
