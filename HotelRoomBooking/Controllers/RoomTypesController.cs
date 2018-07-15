@@ -26,9 +26,9 @@ namespace HotelRoomBooking.Controllers
 
         // GET: api/RoomTypes
         [HttpGet]
-        public IEnumerable<RoomType> GetRoomType()
+        public async Task<IEnumerable<RoomType>> GetRoomType()
         {
-            return Context.RoomType;
+            return await Context.RoomType.ToListAsync();
         }
 
         // GET: api/RoomTypes/5

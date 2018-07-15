@@ -26,9 +26,9 @@ namespace HotelRoomBooking.Controllers
 
         // GET: api/Guests
         [HttpGet]
-        public IEnumerable<Guest> GetGuest()
+        public async Task<IEnumerable<Guest>> GetGuest()
         {
-            return Context.Guest;
+            return await Context.Guest.ToListAsync();
         }
 
         // GET: api/Guests/5

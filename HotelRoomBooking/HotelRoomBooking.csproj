@@ -25,12 +25,20 @@
 
   <ItemGroup>
     <None Remove="ClientApp\app\components\booking\booking.component.ts" />
+    <None Remove="ClientApp\app\components\guest\guest.component.ts" />
+    <None Remove="ClientApp\app\components\roomtype.component.ts" />
     <None Remove="ClientApp\app\Services\booking.service.ts" />
+    <None Remove="ClientApp\app\Services\guest.service.ts" />
+    <None Remove="ClientApp\app\Services\roomtype.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\components\booking\booking.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\guest\guest.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\roomtype\roomtype.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\Services\booking.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\Services\guest.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\Services\roomtype.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

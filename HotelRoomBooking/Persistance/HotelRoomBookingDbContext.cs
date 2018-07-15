@@ -17,8 +17,8 @@ namespace HotelRoomBooking.Persistance
 
         public DbSet<Booking> Booking { get; set; }
 
-        public DbSet<HotelRoomBooking.Model.Guest> Guest { get; set; }
+        public DbSet<Guest> Guest { get; set; }
 
-        public DbSet<HotelRoomBooking.Model.RoomType> RoomType { get; set; }
+        public DbSet<RoomType> RoomType { get; set; }
     }
 }
