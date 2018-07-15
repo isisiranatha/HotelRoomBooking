@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 
 
 @Injectable()
-export class BookingSerive {
+export class BookingService {
     constructor(private http: Http) { }
 
     getBookings() {
