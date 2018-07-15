@@ -20,5 +20,30 @@
     <div class="form-group">
         <label>End Date</label>
         <input id="EndDate" type="date" />
+    </div>   
+    <div>
+        <input type="submit" class="btn btn-info" value="Save">
+        <input type="button" class="btn btn-info" value="Edit">
+        <input type="button" class="btn btn-info" value="Delete">
     </div>
+
+    <table class='table' *ngIf="bookings">
+        <thead>
+            <tr>
+                <th>Guest Name(C)</th>
+                <th>Room Type</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let booking of bookings">
+                <td>{{ booking.dateFormatted }}</td>
+                <td>{{ booking.temperatureC }}</td>
+                <td>{{ booking.temperatureF }}</td>
+                <td>{{ booking.summary }}</td>
+            </tr>
+        </tbody>
+    </table>
 </form>

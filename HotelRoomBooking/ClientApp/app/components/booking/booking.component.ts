@@ -8,6 +8,7 @@ import { BookingService } from "../../Services/booking.service";
     
 export class BookingComponent implements OnInit {
     bookings;
+    guests;
     constructor(private BookingService: BookingService) { }
 
     ngOnInit() {
@@ -15,6 +16,9 @@ export class BookingComponent implements OnInit {
             this.bookings = bookings;
             console.log("Bookings", this.bookings);
         });
-        }
-        
+       
+    }
+    
 }
+
+
