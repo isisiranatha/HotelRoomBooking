@@ -3,7 +3,7 @@ import { GuestService } from "../../Services/guest.service";
 
 @Component({
     selector: 'guest',
-    templateUrl: './guest.component.html'
+    templateUrl: './booking.component.html'
 })
 
 export class GuestComponent implements OnInit {
